@@ -1,3 +1,10 @@
+Scenario : When an Opportunity is created, if it's associated with an Account and its Stage isn't 'Closed',
+should the total amount of all such Opportunities linked to that Account be updated in a custom field on the Account? 
+Additionally, if the Opportunity's Stage changes to 'Closed', or if the Opportunity is deleted while its Stage 
+isn't 'Closed', should the total amount on the related Account be updated?
+
+
+
 trigger OpportunityTrigger on Opportunity (After insert ,After Update ,After delete) {
     New OpportunityTriggerHandler().doAction();
 
@@ -67,10 +74,10 @@ public class OpportunityTriggerHandler {
                 Account Empty = new Account();
                 Empty.Id = keys ;
                 If(AccountwithOppAmount.containskey(keys)){
-                    Empty.AnnualRevenue = (Decimal) AccountwithOppAmount.get(keys).get('TotalAmount');
+                    Empty.ExpectedOppAmount = (Decimal) AccountwithOppAmount.get(keys).get('TotalAmount');
                 }
                 else{
-                    Empty.AnnualRevenue = 0;
+                    Empty.ExpectedOppAmount = 0;
                 }
                 ProcessedAccount.add(Empty);
             }
