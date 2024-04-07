@@ -1,11 +1,11 @@
-/*Business Use Case: Your organization sells products to its customers through opportunities. 
-Each opportunity can have multiple products (Opportunity Line Items) associated with it. The organization wants to 
-keep track of the total number of products sold to each account and display it on the Account record for reporting purposes.
+/*Business Use Case: A sales organization sells multiple products to the same account. The “Number of Products” field on the 
+Account object could be used to track how many different products the company has sold to each account. By updating this field 
+automatically based on the number of Opportunity Line Items related to each Account, sales representatives and account managers 
+can easily view this information in Salesforce and use it to inform their sales and account management strategies.
 
-Pre Work: Create a custom field on the Account object named Number_of_Products__c (Number) 
-to count the total number of products related to all Opportunities associated with the Account.*/
+Pre Work: Create a custom field on the Account object named Number_of_Products__c (Number).*/
 
-// Action occur on -- OpportunityLineItem
+// Action occurs on -- OpportunityLineItem
 // Event -- After
 // Operation -- Insert,Delete
 
